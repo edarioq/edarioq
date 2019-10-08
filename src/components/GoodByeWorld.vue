@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1> Good-bye world!</h1>
+    <h1>Good-bye world!</h1>
     <form @submit.prevent="addLink">
       <input class="link-input" type="text" v-model="newLink" placeholder="Add a link">
     </form>
@@ -20,16 +20,22 @@ import { mapMutations } from 'vuex';
 
 export default class GoodByeWorld extends Vue {
 
-  public newLink: string = '';
+  public newLink: string;
 
-   public addLink(): void {
-    console.log(this.newLink);
-    this.storeLink(this.newLink);
+  constructor() {
+    super();
     this.newLink = '';
   }
 
-  public storeLink(link: any): any {
-    return this.$store.dispatch('storeLink', link);
+  public addLink(): void {
+    console.log(this.newLink);
+    this.$store.dispatch('storeLink', this.newLink)
+      .then(() => {
+        this.newLink = '';
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 }
 </script>

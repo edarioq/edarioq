@@ -1,29 +1,61 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Header />
+    <router-view />
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import Header from '@/components/Header.vue';
+
+@Component({
+  components: {
+    Header
+  },
+})
+
+export default class App extends Vue {}
+
+</script>
+
 <style lang="scss">
+@import '@/sass/app';
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+
+body {
+  font-family: $lora-font;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  color: $black;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $belleza-font;
+  color: $black;
+  margin: 0;
+  padding: 0;
+}
+p, span, ul, li {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: $blue;
+  transition: 300ms;
+  margin: 0;
+  padding: 0;
+  &:hover {
+    color: $aqua;
+  }
+}
+ul {
+  li {
+    margin-left: 15px;
   }
 }
 </style>

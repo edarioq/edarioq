@@ -24,16 +24,6 @@ import { mapState } from 'vuex';
 })
 export default class HelloWorld extends Vue {
 
-/*   public title!: string;
-  public links!: []; */
-
-/*   public get getMessage(): string {
-    return this.title;
-  }
-
-  public get getLinks(): [] {
-    return this.links;
-  } */
 }
 </script>
 

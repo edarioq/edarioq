@@ -14,11 +14,14 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
-    storeLink: (state, link) => {
-      state.links.push(link);
+    storeLink(state, link) {
+      const url = 'https://' + link + '.com';
+      state.links.push(url);
     },
   },
   actions: {
-
+    storeLink(context, link) {
+      context.commit('storeLink', link);
+    },
   },
 });
