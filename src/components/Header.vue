@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Header extends Vue {}
@@ -30,15 +30,16 @@ export default class Header extends Vue {}
 .logo {
     font-family: $belleza-font;
     font-size: 30px;
+    letter-spacing: 2px;
 }
 .home-link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: $blue;
+    color: $aqua;
     line-height: 1;
     &:hover {
-        color: $aqua;
+        color: $green;
     }
 }
 .nav {
@@ -50,6 +51,7 @@ export default class Header extends Vue {}
     font-family: $belleza-font;
     font-size: 20px;
     text-decoration: none;
+    color: $black;
     &:not(:last-child) {
         margin-right: 35px;
     }

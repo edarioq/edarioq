@@ -2,20 +2,28 @@
   <div id="app">
     <Header />
     <router-view />
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 @Component({
   components: {
-    Header
+    Header,
+    Footer,
   },
 })
 
-export default class App extends Vue {}
+export default class App extends Vue {
+
+  constructor() {
+    super();
+  }
+}
 
 </script>
 
@@ -30,12 +38,14 @@ export default class App extends Vue {}
 body {
   font-family: $lora-font;
   max-width: 960px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0;
   color: $black;
+  background-color: $white;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $belleza-font;
+  font-family: $lora-font;
   color: $black;
   margin: 0;
   padding: 0;
@@ -54,8 +64,22 @@ a {
   }
 }
 ul {
+  margin-left: 20px;
   li {
-    margin-left: 15px;
+    margin-bottom: 0;
+    list-style-type: none;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -12px;
+      width: 4px;
+      height: 4px;
+      background-color: $aqua;
+      border-radius: 25%;
+    }
   }
 }
 </style>

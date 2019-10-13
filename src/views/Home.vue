@@ -1,43 +1,91 @@
 <template>
   <main class="home">
     <section class="welcome">
-      <h1 class="title">Software Engineer</h1>
-      <p class="tagline">I build web applications</p>
+      <h1 class="title">Sup...</h1>
+      <p class="tagline">I build cool shit for the <span class="alt-font">web</span></p>
     </section>
+
     <section class="skills">
-      <div class="frontend">
-        <div class="list-label">Frontend</div>
+      <div v-for="(skill, i) in skills" v-bind:key="i">
+        <div class="list-label">
+          <font-awesome-icon class="icon" :icon="skill.icon" />
+          {{ skill.name }}
+        </div>
         <ul class="list">
-          <li>HTML5</li>
-          <li>CSS (SASS)</li>
-          <li>JavaScript</li>
-          <li>TypeScript</li>
-          <li>AngularJS & Angular</li>
-          <li>Vue.js</li>
-        </ul>
-      </div>
-      <div class="backend">
-        <div class="list-label">Backend</div>
-        <ul class="list">
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>Python</li>
-          <li>Flask</li>
-          <li>MongoDB</li>
-          <li>PostgreSQL</li>
+          <li
+            class="list-item"
+            v-for="(item, i) in skill.items"
+            v-bind:key="i">
+            {{ item }}
+          </li>
         </ul>
       </div>
     </section>
+
   </main>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faEdit, faCode, faTerminal, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  components: {}
+  components: {
+    FontAwesomeIcon,
+  },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+
+  public skills: object[];
+
+  constructor() {
+    super();
+
+    this.skills = [
+      {
+        icon: faEdit,
+        name: 'Design',
+        items: [
+          'Invision',
+          'Sketch',
+          'Zeplin',
+        ],
+      },
+      {
+        icon: faCode,
+        name: 'Frontend',
+        items: [
+          'HTML5',
+          'CSS/SASS',
+          'JS/TS',
+          'AngularJS/Angular',
+          'Vue.js',
+        ],
+      },
+      {
+        icon: faTerminal,
+        name: 'Backend',
+        items: [
+          'Node.js/Express',
+          'Python/Flask',
+          'MongoDB',
+          'PostgreSQL',
+        ],
+      },
+      {
+        icon: faChartLine,
+        name: 'Marketing',
+        items: [
+          'SEO',
+          'Google Analytics',
+        ],
+      },
+    ];
+
+    console.log(this.skills);
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -48,9 +96,11 @@ export default class Home extends Vue {}
 .welcome {
   font-size: 60px;
   text-align: center;
+  margin-bottom: 100px;
 }
 .title {
-  font-size: 60px;
+  font-family: $belleza-font;
+  font-size: 300px;
   text-align: center;
 }
 .tagline {
@@ -59,12 +109,36 @@ export default class Home extends Vue {}
 }
 .skills {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 .list-label {
-  margin-bottom: 10px;
+  font-family: $belleza-font;
+  font-size: 22px;
+  margin-bottom: 15px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 23px;
+    background-color: $blue;
+    width: 30px;
+    height: 3px;
+  }
+}
+.icon {
+  width: 12px;
+  margin-right: 5px;
 }
 .list {
   
+}
+.list-item {
+/*   font-size: 16px;
+  color: $black; */
+}
+.alt-font {
+  font-family: $belleza-font;
+  font-size: 1.5em;
 }
 </style>

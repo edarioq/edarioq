@@ -33,7 +33,7 @@ export default class GoodByeWorld extends Vue {
       .then(() => {
         this.newLink = '';
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }
