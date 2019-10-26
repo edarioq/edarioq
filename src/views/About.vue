@@ -54,13 +54,15 @@ export default class About extends Vue {
       {
         label: '1992',
         text:
-          'Moved to the Atlanta, Georgia when I was 7 years old. Did all schools from Elementary to High School.',
+          'Moved to Atlanta, Georgia. Did all the grades from Elementary to\
+          High School. Did swimming for several years\
+          competitively. Got buff, went to the State finals and Regional finals.',
       },
       {
         label: '2003',
         text:
-          'Took an unexpected trip to Cartagena, Colombia and\
-          ended up staying for a year.',
+          'Took a very unexpected trip to Cartagena, Colombia and\
+          ended up staying for about a year.',
       },
       {
         label: '2004',
@@ -68,7 +70,7 @@ export default class About extends Vue {
           'Moved to Barranqulla and lived here for about \
           a year and a half. Did some reflectioning on life,\
           got in touch with my Colombian roots, got a nice girlfriend\
-          and a part time job. Had a blast but geez is it hot.',
+          and a part time job. Had a blast but it\'s too damn hot.',
       },
       {
         label: '2006',
