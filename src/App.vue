@@ -42,7 +42,9 @@ body {
   margin: 0 auto;
   padding: 0;
   color: $black;
-  background-color: $white;
+  background-color: $gray;
+  position: relative;
+  overflow-y: scroll;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $lora-font;
@@ -77,7 +79,7 @@ ul {
       left: -12px;
       width: 4px;
       height: 4px;
-      background-color: $aqua;
+      background-color: $black;
       border-radius: 25%;
     }
   }

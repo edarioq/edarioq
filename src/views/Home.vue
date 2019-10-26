@@ -1,8 +1,8 @@
 <template>
   <main class="home">
     <section class="welcome">
-      <h1 class="title">Sup...</h1>
-      <p class="tagline">I build cool shit for the <span class="alt-font">web</span></p>
+      <h1 class="title">Sup</h1>
+      <p class="tagline">I build cool shit for the <span class="alt-font">web</span>, with a skill set that consists of:</p>
     </section>
 
     <section class="skills">
@@ -47,6 +47,8 @@ export default class Home extends Vue {
         icon: faEdit,
         name: 'Design',
         items: [
+          'Prototyping',
+          'Wireframing',
           'Invision',
           'Sketch',
           'Zeplin',
@@ -77,13 +79,12 @@ export default class Home extends Vue {
         icon: faChartLine,
         name: 'Marketing',
         items: [
-          'SEO',
+          'SEO/SEM',
+          'Conversion Optimization',
           'Google Analytics',
         ],
       },
     ];
-
-    console.log(this.skills);
   }
 }
 </script>
@@ -136,9 +137,5 @@ export default class Home extends Vue {
 .list-item {
 /*   font-size: 16px;
   color: $black; */
-}
-.alt-font {
-  font-family: $belleza-font;
-  font-size: 1.5em;
 }
 </style>

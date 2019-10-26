@@ -36,10 +36,10 @@ export default class Header extends Vue {}
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: $aqua;
+    color: $black;
     line-height: 1;
     &:hover {
-        color: $green;
+        color: $blue;
     }
 }
 .nav {
@@ -56,7 +56,10 @@ export default class Header extends Vue {}
         margin-right: 35px;
     }
     &:hover {
-        color: $aqua;
+        color: $blue;
     }
+}
+.router-link-exact-active {
+    color: $blue;
 }
 </style>
