@@ -7,7 +7,7 @@
 
     <section class="skills">
       <div v-for="(skill, i) in skills" v-bind:key="i">
-        <div class="list-label">
+        <div class="list-label blue-line">
           <font-awesome-icon class="icon" :icon="skill.icon" />
           {{ skill.name }}
         </div>
@@ -117,15 +117,6 @@ export default class Home extends Vue {
   font-size: 22px;
   margin-bottom: 15px;
   position: relative;
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 23px;
-    background-color: $blue;
-    width: 30px;
-    height: 3px;
-  }
 }
 .icon {
   width: 12px;

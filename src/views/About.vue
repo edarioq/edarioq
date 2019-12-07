@@ -7,15 +7,13 @@
           My name is Edgar and I have over 10 years of experience in the Digital landscape.
           For 6 of those years I've worked in Digital Marketing, designing and implementing
           organic search engine strategies for major brands such as P&G, Pantene,
-          Diners Club International, and many (many) more. More recently however I've
+          Diners Club International, and many (many) more. More recently, for the past 4 years, I've
           shifted over into Software Development, primarly as a Frontend Developer but also
-          in the backend when possible. I love building digital products for people,
-          nor just for machines. I truly love technology, have an eye for design and I get a kick
-          out of solving complex problems, hence the fall into Software Development and Frontend
-          was a natural fit.
+          in the backend when possible. I love building digital products.
+          I am passionate about technology, have an eye for design and I enjoy
+          finding simple solutions to complex problems.
         </caption>
       </div>
-      <div class="learn-more">Interested in knowing more about me? Click on the clock.</div>
     </section>
 
     <section class="timeline">
@@ -49,89 +47,51 @@ export default class About extends Vue {
     this.timeline = [
       {
         label: '1983',
-        text: 'I was born on the 20th of January in Barranquilla, Colombia.',
+        text: 'Born on the 20th of January in Barranquilla, Colombia.',
       },
       {
         label: '1992',
-        text:
-          'Moved to Atlanta, Georgia. Did all the grades from Elementary to\
-          High School. Did swimming for several years\
-          competitively. Got buff, went to the State finals and Regional finals.',
+        text: `Moved to Atlanta, Georgia. USA.`,
       },
       {
         label: '2003',
-        text:
-          'Took a very unexpected trip to Cartagena, Colombia and\
-          ended up staying for about a year.',
+        text: `Moved to Cartagena, Colombia`,
       },
       {
         label: '2004',
-        text:
-          'Moved to Barranqulla and lived here for about \
-          a year and a half. Did some reflectioning on life,\
-          got in touch with my Colombian roots, got a nice girlfriend\
-          and a part time job. Had a blast but it\'s too damn hot.',
+        text: `Move to Barranquilla, Colombia`,
       },
       {
         label: '2006',
-        text:
-          'Moved to Bogota and lived here for way too long.\
-          Took an interest in Tech and the Web. Ended up hating Bogota\
-          but I started to grow professionally.',
+        text: `Moved to Bogota, Colombia`,
       },
       {
         label: '2008',
-        text:
-          'Got my first "real" job in Bogota as as Junior \
-          Web Designer/SEO Consultant. (I know weird). Learned HTML\
-          and CSS.',
+        text: `Landed a job as a Web Designer/SEO Consultant in an Agency`,
       },
       {
         label: '2010',
-        text:
-          'Got my second "real" job as a Search Specialist,\
-          moslty building organic search strategies (SEO) \
-          and Google Analytics for huge brands such as Diners\
-          Club International. Did some college, worked and studied at the same time.',
+        text: `Landed my second job in SEO in Intergrupo`,
       },
       {
         label: '2013',
-        text:
-          'Got my third and last office job at GroupM.\
-          I took on some major clients and two huge regional projects.\
-          Learned a lot but ultimately I was disappointed at office live and burned out \
-          at long work hours, lots of studying, and most importantly the nature of how\
-          marketing really works at a high level.',
+        text: `Landed a corporate job in GroupM as Account Executive`,
       },
       {
         label: '2014',
-        text:
-          'I took a major break from everything, quit my job at the time and did some\
-          small final gigs for small agencies for a few months. \
-          I began doing lots of freelance, and decied to dedicate everything \
-          to jumping on the tech bandwagon. I learned JavaScript and ES6.',
+        text: `Started to code`,
       },
       {
         label: '2015',
-        text:
-          'Shifted from DM into Web Development, found my calling in Frontend\
-          and took on major contracts for small startups in the US,\
-          still doing some Freelance for local clients. Learned Angular.',
+        text: `Learned AngularJS`,
       },
       {
         label: '2017',
-        text:
-          'Took on a long term full time contract with a start up called Hello Insight\
-          where I get to build the Frontend of a Web Application in\
-          AngularJS/Angular, Python and Flask, that evalutes Youth Development\
-          Programs for kids across the US.',
+        text: `Landed a contract as a Frontend Developer for a startup in the US`,
       },
       {
         label: '2018',
-        text:
-          'Moved to Medellin where I work remotely and travel abroad often.\
-          I get to enjoy lovely weather year round and beautiful,\
-          friendly people. Learned Python. Woot!',
+        text: `Moved to Medellin`,
       },
     ];
   }
@@ -164,13 +124,11 @@ export default class About extends Vue {
   margin: 0 auto 25px;
 }
 .context {
+  font-size: 20px;
   max-width: 660px;
-  line-height: 1.6;
+  line-height: 1.8;
   margin: 0 auto 25px;
   padding: 0 50px;
-}
-.learn-more {
-  text-align: center;
 }
 .timeline {
   display: grid;
