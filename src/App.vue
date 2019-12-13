@@ -34,12 +34,10 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 body {
   font-family: $lora-font;
-  max-width: 960px;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   color: $black;
   background-color: $gray;

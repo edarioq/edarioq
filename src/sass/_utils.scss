@@ -1,3 +1,10 @@
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-column-gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
 .alt-font {
   font-family: $belleza-font;
   font-size: 1.5em;

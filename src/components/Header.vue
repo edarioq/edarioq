@@ -6,7 +6,6 @@
     </div>
     <nav class="nav">
         <router-link class="link" to="/about">about</router-link>
-        <router-link class="link" to="/work">work</router-link>
     </nav>
   </header>
 
@@ -26,6 +25,8 @@ export default class Header extends Vue {}
     display: grid;
     grid-template-columns: auto 1fr;
     padding: 25px 0;
+    max-width: 960px;
+    margin: 0 auto;
 }
 .logo {
     font-family: $belleza-font;

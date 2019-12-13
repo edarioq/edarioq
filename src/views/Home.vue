@@ -1,5 +1,5 @@
 <template>
-  <main class="home">
+  <main class="main-container home">
     <section class="welcome">
       <h1 class="title">Sup</h1>
       <p class="tagline">I build cool shit for the <span class="alt-font">web</span>, with a skill set that consists of:</p>
@@ -47,8 +47,7 @@ export default class Home extends Vue {
         icon: faEdit,
         name: 'Design',
         items: [
-          'Prototyping',
-          'Wireframing',
+          'UI Prototyping',
           'Invision',
           'Sketch',
           'Zeplin',
@@ -60,7 +59,7 @@ export default class Home extends Vue {
         items: [
           'HTML5',
           'CSS/SASS',
-          'JS/TS',
+          'JavaScript/Typescript',
           'AngularJS/Angular',
           'Vue.js',
         ],
@@ -98,6 +97,7 @@ export default class Home extends Vue {
   font-size: 60px;
   text-align: center;
   margin-bottom: 100px;
+  grid-column: 1/span 12;
 }
 .title {
   font-family: $belleza-font;
@@ -111,6 +111,7 @@ export default class Home extends Vue {
 .skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-column: 1/span 12;
 }
 .list-label {
   font-family: $belleza-font;
