@@ -14,9 +14,15 @@
     <figure
       class="circle mini-circle"
       v-for="(circle, i) in minis"
-      v-on:click="clickHere"
       v-bind:key="i"
-      :class="'circle-'+circle.id">
+      v-bind:style="{ transform: boom(circle) }"
+      v-bind:class="{ 'begin': begin }"
+      @mousedown="startMove(circle, $event)"
+      @mousemove="doMove(circle, $event)"
+      @mouseup="stopMove(circle, $event)">
+      <div class="mini-circle-text">
+        {{ circle.id }}
+      </div>
     </figure>
 
   </main>
@@ -33,23 +39,79 @@ export default class About extends Vue {
 
   constructor() {
     super();
-
-    this.minis = [
-      { id: 1 },
-      { id: 2 },
-      { id: 3 },
-      { id: 4 },
-      { id: 5 },
-      { id: 6 },
-      { id: 7 },
-      { id: 8 }
-    ];
-
+    this.minis = this.generateMinis();
   }
 
   public clickHere(): void {
     this.begin = !this.begin;
-    console.log(this.begin);
+  }
+
+  public getRandomNumber(min: number, max: number): number {
+    const random = Math.floor(Math.random() * (max - min + 1) + min);
+    return random;
+  }
+
+  public generateMinis(): object[] {
+    const rand = this.getRandomNumber(20, 50);
+    const figures = [];
+    for (let i = 1; i < rand + 1; i++) {
+      figures.push({id: i});
+    }
+    return figures;
+  }
+  
+  public getMaximumScreenValues(): {x: number, y: number} {
+    const maxWidth = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    const maxHeight = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+
+    return {
+      x: Math.round((maxWidth / 2) - 100),
+      y: Math.round((maxHeight / 2) - 100)
+    };
+
+  }
+
+  public boom(circle: any): string {
+    const maxX = this.getMaximumScreenValues().x;
+    const maxY = this.getMaximumScreenValues().y;
+
+    const x = this.getRandomNumber(-maxX, maxX);
+    const y = this.getRandomNumber(-maxY, maxY);
+    if (!this.begin) {
+      return `translate(-50%, -50%)`;
+    } else {
+      return `translate(${x}px, ${y}px)`;
+    }
+  }
+
+  public startMove(circle: any, e: any) {
+    circle.canMove = true;
+    console.log('Can move');
+  }
+
+  public stopMove(circle: any, e: any) {
+    circle.canMove = false;
+    console.log('Stop move');
+  }
+
+  public doMove(circle: any, e: any) {
+    let x = 0;
+    let y = 0;
+    if (circle.canMove) {
+      let elem = e.srcElement;
+      let val = elem.style.transform;
+
+      let xVal = val.replace(/translate\($/g, '');
+
+      console.log(xVal);
+      e.srcElement.style.transform = 'translate(-200px, -200px)';
+    }
   }
 }
 </script>
@@ -59,8 +121,6 @@ export default class About extends Vue {
 
 @mixin move($x, $y){
   transform: translate($x, $y);
-  opacity: 1;
-  transition: 1000ms;
 }
 
 .about {
@@ -109,34 +169,22 @@ export default class About extends Vue {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
   transition: 500ms;
   opacity: 0;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+.mini-circle-text {
+  font-family: $belleza-font;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 .begin {
-  .circle-1 {
-    @include move(-250px, -250px);
-  }
-  .circle-2 {
-    @include move(-350px, 220px);
-  }
-  .circle-3 {
-    @include move(400px, 100px);
-  }
-  .circle-4 {
-    @include move(200px, -300px);
-  }
-  .circle-5 {
-    @include move(100px, 350px);
-  }
-  .circle-6 {
-    @include move(-500px, 0);
-  }
-  .circle-7 {
-    @include move(-450px, -350px);
-  }
-  .circle-7 {
-    @include move(10px, 30px);
-  }
+  opacity: 1;
+  transition: 1000ms;
 }
 </style>
