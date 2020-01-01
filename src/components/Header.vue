@@ -5,7 +5,12 @@
         <router-link class="home-link" to="/">edarioq</router-link>
     </div>
     <nav class="nav">
-        <router-link class="link" to="/about">about</router-link>
+        <!-- <router-link class="link" to="/about">about</router-link> -->
+        <a
+            href="https://www.linkedin.com/in/edarioq"
+            target="_blank">
+            <font-awesome-icon class="icon" :icon="icon" />
+        </a>
     </nav>
   </header>
 
@@ -13,9 +18,17 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 @Component
-export default class Header extends Vue {}
+export default class Header extends Vue {
+    public icon: any;
+    constructor() {
+        super();
+        this.icon = faLinkedin;
+    }
+}
 </script>
 
 <style scoped lang="scss">
@@ -62,5 +75,20 @@ export default class Header extends Vue {}
 }
 .router-link-exact-active {
     color: $blue;
+}
+.icon {
+    font-size: 24px;
+    color: $black;
+    transition: 300ms;
+    &:hover {
+        cursor: pointer;
+        color: $blue;
+    }
+}
+@include tablet {
+    .header {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }
 </style>

@@ -2,7 +2,10 @@
   <main class="main-container home">
     <section class="welcome">
       <h1 class="title">Sup</h1>
-      <p class="tagline">I build cool shit for the <span class="alt-font">web</span>, with a skill set that consists of:</p>
+      <p class="tagline">
+        I build cool shit for the <span class="alt-font">web</span>,
+        with a skill set that consists of:
+      </p>
     </section>
 
     <section class="skills">
@@ -11,9 +14,8 @@
           <font-awesome-icon class="icon" :icon="skill.icon" />
           {{ skill.name }}
         </div>
-        <ul class="list">
+        <ul class="skills-list">
           <li
-            class="list-item"
             v-for="(item, i) in skill.items"
             v-bind:key="i">
             {{ item }}
@@ -76,9 +78,9 @@ export default class Home extends Vue {
       },
       {
         icon: faChartLine,
-        name: 'Marketing',
+        name: 'Digital Marketing',
         items: [
-          'SEO/SEM',
+          'SEO',
           'Conversion Optimization',
           'Google Analytics',
         ],
@@ -98,20 +100,43 @@ export default class Home extends Vue {
   text-align: center;
   margin-bottom: 100px;
   grid-column: 1/span 12;
+  @include phone {
+    margin-bottom: 25px;
+  }
 }
 .title {
   font-family: $belleza-font;
   font-size: 300px;
   text-align: center;
+  @include phone {
+    font-size: 150px;
+  }
 }
 .tagline {
   font-size: 20px;
   margin: 25px 0;
+  @include phone {
+    font-size: 18px;
+    padding: 0 50px;
+  }
 }
 .skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column: 1/span 12;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 20px;
+    padding: 0 50px;
+  }
+  @include phone {
+    grid-template-columns: 1fr;
+  }
+}
+.skills-list {
+  @include phone {
+    margin-bottom: 20px;
+  }
 }
 .list-label {
   font-family: $belleza-font;
@@ -122,12 +147,5 @@ export default class Home extends Vue {
 .icon {
   width: 12px;
   margin-right: 5px;
-}
-.list {
-  
-}
-.list-item {
-/*   font-size: 16px;
-  color: $black; */
 }
 </style>
