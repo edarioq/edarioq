@@ -1,19 +1,11 @@
 .DS_Store
 node_modules
-/tests/e2e/
+/dist
+/tests
 
 # local env files
 .env.local
 .env.*.local
 
-# Log files
-npm-debug.log*
-
 # Editor directories and files
-.idea
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

@@ -1,10 +1,8 @@
-# Hello
-
 # Install
 Run `npm install`
 
-# Run Frontend
+# Run Vue
 Run `npm run serve`
 
-# Run Backend
-Run `npm run server`
+# Run Build
+Run `npm run build` and then `npm start`
