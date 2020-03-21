@@ -3,7 +3,7 @@
     <section class="welcome">
       <h1 class="title">Sup</h1>
       <p class="tagline">
-        I build cool shit for the <span class="alt-font">web</span>,
+        I build cool Apps for the <span class="alt-font">web</span>,
         with a skill set that consists of:
       </p>
     </section>

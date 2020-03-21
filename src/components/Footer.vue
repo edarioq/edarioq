@@ -1,7 +1,7 @@
 <template>
 
   <footer class="footer">
-      I did this - {{ date.getFullYear() }} &copy;
+      Edgar Quintero - {{ date.getFullYear() }} &copy;
   </footer>
 
 </template>
