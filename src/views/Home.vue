@@ -1,14 +1,25 @@
 <template>
   <main class="main-container home">
     <section class="welcome">
-      <h1 class="title">Sup</h1>
-      <p class="tagline">
-        I build cool Apps for the <span class="alt-font">web</span>,
-        with a skill set that consists of:
+      <div class="presentation" >
+        <div class="greeting" v-if="!appear">
+          <span @mouseover="greet()">{{ greeting }}</span>
+        </div>
+        <div class="name" v-bind:class="{ 'appear' : appear }">
+          <span class="brand">
+            <span class="letter">E</span>dgar
+            <span class="letter">D</span>ario
+            <span class="letter">Q</span>uintero
+          </span>
+        </div>
+      </div>
+      <p class="tagline" v-if="appear">
+        I'm a developer that primarly enjoys building software for humans,
+        with a skill set that consists of the following.
       </p>
     </section>
 
-    <section class="skills">
+    <section class="skills" v-if="appear">
       <div v-for="(skill, i) in skills" v-bind:key="i">
         <div class="list-label blue-line">
           <font-awesome-icon class="icon" :icon="skill.icon" />
@@ -16,6 +27,7 @@
         </div>
         <ul class="skills-list">
           <li
+            class="list-item"
             v-for="(item, i) in skill.items"
             v-bind:key="i">
             {{ item }}
@@ -31,6 +43,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faEdit, faCode, faTerminal, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { Skill } from '../models/skills';
 
 @Component({
   components: {
@@ -38,54 +51,67 @@ import { faEdit, faCode, faTerminal, faChartLine } from '@fortawesome/free-solid
   },
 })
 export default class Home extends Vue {
-
-  public skills: object[];
+  public greeting: string = 'Hello ...';
+  public appear: boolean = false;
+  public skills: Skill[] = [];
+  public counter: number = 0;
 
   constructor() {
     super();
 
-    this.skills = [
-      {
-        icon: faEdit,
-        name: 'Design',
-        items: [
-          'UI Prototyping',
-          'Invision',
-          'Sketch',
-          'Zeplin',
-        ],
-      },
-      {
-        icon: faCode,
-        name: 'Frontend',
-        items: [
-          'HTML5',
-          'CSS/SASS',
-          'JavaScript/Typescript',
-          'AngularJS/Angular',
-          'Vue.js',
-        ],
-      },
-      {
-        icon: faTerminal,
-        name: 'Backend',
-        items: [
-          'Node.js/Express',
-          'Python/Flask',
-          'MongoDB',
-          'PostgreSQL',
-        ],
-      },
-      {
-        icon: faChartLine,
-        name: 'Digital Marketing',
-        items: [
-          'SEO',
-          'Conversion Optimization',
-          'Google Analytics',
-        ],
-      },
-    ];
+    const design = new Skill(faEdit, 'Design', [
+      'UI Prototyping',
+      'Invision',
+      'Sketch',
+      'Zeplin',
+    ]);
+    const frontend = new Skill(faCode, 'Frontend', [
+      'HTML5',
+      'CSS/SASS',
+      'JavaScript/Typescript',
+      'AngularJS/Angular',
+      'Vue.js',
+    ]);
+    const backend = new Skill(faTerminal, 'Backend', [
+      'Node.js/Express',
+      'Python/Flask',
+      'MongoDB',
+      'PostgreSQL',
+    ]);
+    const digitalMarketing = new Skill(faChartLine, 'Digital Marketing', [
+      'SEO',
+      'Conversion Optimization',
+      'Google Analytics',
+    ])
+
+    this.skills.push(design, frontend, backend, digitalMarketing);
+  }
+
+  mounted() {
+    window.onfocus = () => {
+      this.changeGreeting('How are you ?', this.increment());
+      this.changeGreeting('Nice to meet you ...', this.increment());
+      this.changeGreeting('Allow me to present myself ...', this.increment());
+      this.changeGreeting('My name is ...', this.increment());
+      this.changeGreeting('ahem ...', this.increment());
+      this.changeGreeting('cough ...', this.increment());
+      this.changeGreeting('edarioq !', this.increment());
+      this.changeGreeting('Just kidding that\'s just my handle ...', this.increment());
+      this.changeGreeting('Still waiting ?', this.increment());
+      this.changeGreeting('Um, and you\'re still waiting ?', this.increment());
+    };
+  }
+
+  increment() {
+    return this.counter += 3000;
+  }
+
+  changeGreeting(greeting: string, time: number) {
+    setTimeout(() => { this.greeting = greeting}, time);
+  }
+
+  greet() {
+    setTimeout(() => { this.appear = true }, 1000);
   }
 }
 </script>
@@ -96,7 +122,6 @@ export default class Home extends Vue {
   padding: 50px 0;
 }
 .welcome {
-  font-size: 60px;
   text-align: center;
   margin-bottom: 100px;
   grid-column: 1/span 12;
@@ -104,19 +129,45 @@ export default class Home extends Vue {
     margin-bottom: 25px;
   }
 }
-.title {
-  font-family: $belleza-font;
-  font-size: 300px;
-  text-align: center;
-  @include phone {
-    font-size: 150px;
+.presentation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  opacity: 1;
+  position: relative;
+  z-index: 1000;
+  height: 50vh;
+}
+.name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  font-weight: 700;
+  position: absolute;
+  transition: 3000ms ease-in-out;
+  opacity: 0;
+  z-index: 100;
+  height: 25vh;
+  &.appear {
+    font-size: 3.2rem;
+    position: inherit;
+    opacity: 1;
   }
 }
 .tagline {
-  font-size: 20px;
-  margin: 25px 0;
+  font-size: 1.4rem;
+  margin: 0 auto 25px;
+  max-width: 650px;
+  line-height: 1.8;
   @include phone {
-    font-size: 18px;
+    font-size: 1rem;
     padding: 0 50px;
   }
 }
@@ -140,12 +191,18 @@ export default class Home extends Vue {
 }
 .list-label {
   font-family: $belleza-font;
-  font-size: 22px;
+  font-size: 1.5rem;
   margin-bottom: 15px;
   position: relative;
+}
+.list-item {
+  font-size: 1rem;
 }
 .icon {
   width: 12px;
   margin-right: 5px;
+}
+.letter {
+  color: $blue;
 }
 </style>
