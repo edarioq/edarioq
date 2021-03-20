@@ -7,7 +7,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Footer extends Vue {
-  date: Date = new Date();
+  public date: Date = new Date();
 
   constructor() {
     super();
@@ -16,7 +16,8 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped lang="scss">
-.footer {
+$module: 'footer';
+.#{$module} {
   display: grid;
   align-items: center;
   justify-content: center;

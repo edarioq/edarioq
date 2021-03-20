@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <Header />
-      <router-view />
-    <Footer />
+  <div id="app" v-on:click="setMouseCursor()">
+    <!-- <Header /> -->
+    <router-view />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -17,38 +17,47 @@ import Footer from '@/components/Footer.vue';
     Footer,
   },
 })
-
 export default class App extends Vue {
-
   constructor() {
     super();
   }
-}
 
+  setMouseCursor(): void {
+    console.debug('cool');
+  }
+}
 </script>
 
 <style lang="scss">
 #app {
+  min-height: 100vh;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 body {
   font-family: $lora-font;
   font-size: 12px;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   color: $white;
-  position: relative;
   background-color: $black;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $lora-font;
   color: $white;
   margin: 0;
   padding: 0;
 }
-p, span, ul, li {
+p,
+span,
+ul,
+li {
   margin: 0;
   padding: 0;
   line-height: 1.6;

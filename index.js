@@ -6,5 +6,5 @@ const port = process.env.PORT || 5000;
 app.use(serveStatic(__dirname + '/dist'));
 
 app.listen(port, () => {
-    console.log(`Server started on ${ port }`);
+  console.log(`Server started on ${port}`);
 });

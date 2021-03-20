@@ -10,19 +10,23 @@ import Terminal from '@/components/Terminal.vue';
 
 @Component({
   components: {
-    Terminal
+    Terminal,
   },
 })
 export default class Home extends Vue {
-
   constructor() {
     super();
   }
-
-
 }
 </script>
 
 <style scoped lang="scss">
+$module: 'home';
 
+.#{$module} {
+  display: grid;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
 </style>

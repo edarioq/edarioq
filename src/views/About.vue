@@ -1,11 +1,9 @@
 <template>
   <main class="main-container about">
     <section class="welcome">
-      <div class="presentation" >
+      <div class="presentation">
         <div class="name">
-          <span class="brand">
-            My name is Edgar
-          </span>
+          <span class="brand"> My name is Edgar </span>
         </div>
       </div>
       <p class="tagline">
@@ -20,23 +18,24 @@
           {{ skill.name }}
         </div>
         <ul class="skills-list">
-          <li
-            class="list-item"
-            v-for="(item, i) in skill.items"
-            v-bind:key="i">
+          <li class="list-item" v-for="(item, i) in skill.items" v-bind:key="i">
             {{ item }}
           </li>
         </ul>
       </div>
     </section>
-
   </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faEdit, faCode, faTerminal, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEdit,
+  faCode,
+  faTerminal,
+  faChartLine,
+} from '@fortawesome/free-solid-svg-icons';
 import { Skill } from '../models/skills';
 
 @Component({
@@ -45,13 +44,13 @@ import { Skill } from '../models/skills';
   },
 })
 export default class About extends Vue {
-  skills: Skill[] = [];
+  public skills: Skill[] = [];
 
   constructor() {
     super();
   }
 
-  mounted() {
+  public mounted() {
     const design = new Skill(faEdit, 'Design', [
       'Sketch',
       'Invision',
@@ -86,7 +85,7 @@ export default class About extends Vue {
 .welcome {
   text-align: center;
   margin-bottom: 100px;
-  grid-column: 1/span 12;
+  grid-column: 1 / span 12;
   @include phone {
     margin-bottom: 25px;
   }
@@ -133,7 +132,7 @@ export default class About extends Vue {
 .skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column: 1/span 12;
+  grid-column: 1 / span 12;
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 20px;
