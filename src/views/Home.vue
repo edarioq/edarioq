@@ -2,10 +2,7 @@
   <main class="main-container home">
     <section class="welcome">
       <div class="presentation" >
-        <div class="greeting" v-if="!appear">
-          <span @mouseover="greet()">{{ greeting }}</span>
-        </div>
-        <div class="name" v-bind:class="{ 'appear' : appear }">
+        <div class="name">
           <span class="brand">
             <span class="letter">E</span>dgar
             <span class="letter">D</span>ario
@@ -13,13 +10,13 @@
           </span>
         </div>
       </div>
-      <p class="tagline" v-if="appear">
+      <p class="tagline">
         I'm a developer that primarly enjoys building software for humans,
         with a skill set that consists of the following.
       </p>
     </section>
 
-    <section class="skills" v-if="appear">
+    <section class="skills">
       <div v-for="(skill, i) in skills" v-bind:key="i">
         <div class="list-label blue-line">
           <font-awesome-icon class="icon" :icon="skill.icon" />
@@ -51,10 +48,7 @@ import { Skill } from '../models/skills';
   },
 })
 export default class Home extends Vue {
-  public greeting: string = 'Hello ...';
-  public appear: boolean = false;
   public skills: Skill[] = [];
-  public counter: number = 0;
 
   constructor() {
     super();
@@ -82,42 +76,14 @@ export default class Home extends Vue {
       'SEO',
       'Conversion Optimization',
       'Google Analytics',
-    ])
+    ]);
 
     this.skills.push(design, frontend, backend, digitalMarketing);
-  }
-
-  mounted() {
-    window.onfocus = () => {
-      this.changeGreeting('How are you ?', this.increment());
-      this.changeGreeting('Nice to meet you ...', this.increment());
-      this.changeGreeting('Allow me to present myself ...', this.increment());
-      this.changeGreeting('My name is ...', this.increment());
-      this.changeGreeting('ahem ...', this.increment());
-      this.changeGreeting('cough ...', this.increment());
-      this.changeGreeting('edarioq !', this.increment());
-      this.changeGreeting('Just kidding that\'s just my handle ...', this.increment());
-      this.changeGreeting('Still waiting ?', this.increment());
-      this.changeGreeting('Um, and you\'re still waiting ?', this.increment());
-    };
-  }
-
-  increment() {
-    return this.counter += 3000;
-  }
-
-  changeGreeting(greeting: string, time: number) {
-    setTimeout(() => { this.greeting = greeting}, time);
-  }
-
-  greet() {
-    setTimeout(() => { this.appear = true }, 1000);
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import "@/sass/app";
 .home {
   padding: 50px 0;
 }
@@ -148,18 +114,10 @@ export default class Home extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  position: absolute;
-  transition: 3000ms ease-in-out;
-  opacity: 0;
   z-index: 100;
   height: 25vh;
-  &.appear {
-    font-size: 3.2rem;
-    position: inherit;
-    opacity: 1;
-  }
 }
 .tagline {
   font-size: 1.4rem;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+      <router-view />
     <Footer />
   </div>
 </template>
@@ -28,8 +28,6 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
-@import '@/sass/app';
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

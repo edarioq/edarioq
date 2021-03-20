@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component
 export default class Header extends Vue {
@@ -27,8 +27,6 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import "@/sass/app";
-
 .header {
   display: grid;
   grid-template-columns: auto 1fr;

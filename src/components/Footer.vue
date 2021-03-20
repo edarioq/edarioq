@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Footer extends Vue {
-  private date: Date;
+  public date: Date;
 
   constructor() {
     super();
@@ -17,8 +17,6 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import "@/sass/app";
-
 .footer {
   display: grid;
   align-items: center;

@@ -1,7 +1,7 @@
 export class Skill {
-  icon: any;
-  name: string;
-  items: string[];
+  public icon: any;
+  public name: string;
+  public items: string[];
 
   constructor(icon: any, name: string, items: string[]) {
     this.icon = icon;
