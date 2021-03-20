@@ -12,8 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Component, Vue } from 'vue-property-decorator';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component
@@ -43,8 +42,8 @@ export default class Header extends Vue {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: $black;
   line-height: 1;
+  color: $white;
   &:hover {
     color: $blue;
   }
@@ -54,24 +53,9 @@ export default class Header extends Vue {
   align-items: center;
   justify-content: flex-end;
 }
-.link {
-  font-family: $belleza-font;
-  font-size: 2rem;
-  text-decoration: none;
-  color: $black;
-  &:not(:last-child) {
-    margin-right: 35px;
-  }
-  &:hover {
-    color: $blue;
-  }
-}
-.router-link-exact-active {
-  color: $blue;
-}
 .icon {
   font-size: 2rem;
-  color: $black;
+  color: $white;
   transition: 300ms;
   &:hover {
     cursor: pointer;

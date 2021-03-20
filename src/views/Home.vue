@@ -4,15 +4,12 @@
       <div class="presentation" >
         <div class="name">
           <span class="brand">
-            <span class="letter">E</span>dgar
-            <span class="letter">D</span>ario
-            <span class="letter">Q</span>uintero
+            My name is Edgar
           </span>
         </div>
       </div>
       <p class="tagline">
-        I'm a developer that primarly enjoys building software for humans,
-        with a skill set that consists of the following.
+        I'm a developer that enjoys building awesome digital experiences.
       </p>
     </section>
 
@@ -54,28 +51,26 @@ export default class Home extends Vue {
     super();
 
     const design = new Skill(faEdit, 'Design', [
-      'UI Prototyping',
-      'Invision',
       'Sketch',
+      'Invision',
       'Zeplin',
     ]);
     const frontend = new Skill(faCode, 'Frontend', [
-      'HTML5',
-      'CSS/SASS',
-      'JavaScript/Typescript',
-      'AngularJS/Angular',
+      'JavaScript / Typescript',
+      'HTML & CSS/SASS',
+      'AngularJS / Angular',
       'Vue.js',
     ]);
     const backend = new Skill(faTerminal, 'Backend', [
-      'Node.js/Express',
-      'Python/Flask',
+      'Node.js / Express',
+      'Python / Flask',
       'MongoDB',
       'PostgreSQL',
     ]);
-    const digitalMarketing = new Skill(faChartLine, 'Digital Marketing', [
-      'SEO',
-      'Conversion Optimization',
-      'Google Analytics',
+    const digitalMarketing = new Skill(faChartLine, 'Dev Ops', [
+      'Git',
+      'Jenkins',
+      'Docker',
     ]);
 
     this.skills.push(design, frontend, backend, digitalMarketing);
@@ -118,15 +113,20 @@ export default class Home extends Vue {
   font-weight: 700;
   z-index: 100;
   height: 25vh;
+  @include phone {
+    font-size: 2.2rem;
+    padding: 0 25px;
+    height: auto;
+    margin-bottom: 25px;
+  }
 }
 .tagline {
   font-size: 1.4rem;
   margin: 0 auto 25px;
-  max-width: 650px;
   line-height: 1.8;
   @include phone {
-    font-size: 1rem;
-    padding: 0 50px;
+    font-size: 1.2rem;
+    padding: 0 25px;
   }
 }
 .skills {
@@ -159,8 +159,5 @@ export default class Home extends Vue {
 .icon {
   width: 12px;
   margin-right: 5px;
-}
-.letter {
-  color: $blue;
 }
 </style>

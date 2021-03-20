@@ -38,12 +38,13 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: $black;
+  color: $white;
   position: relative;
+  background-color: $black;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $lora-font;
-  color: $black;
+  color: $white;
   margin: 0;
   padding: 0;
 }
