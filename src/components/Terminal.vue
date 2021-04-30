@@ -1,7 +1,14 @@
 <template>
   <section class="terminal">
-    <span class="terminal__sign">$</span>
-    <input class="terminal__input" v-model="command" type="text" @keyup.enter="enterClicked" ref="terminal" tabindex="1">
+    <span class="terminal__sign">$ ></span>
+    <input
+      class="terminal__input"
+      v-model="command"
+      type="text"
+      @keyup.enter="enterClicked"
+      ref="terminal"
+      tabindex="1"
+    />
   </section>
 </template>
 
@@ -23,7 +30,7 @@ export default class Terminal extends Vue {
     });
   }
 
-  public enterClicked():void {
+  public enterClicked(): void {
     console.debug(this.command);
     this.command = '';
   }
@@ -35,30 +42,30 @@ $module: 'terminal';
 
 .#{$module} {
   display: grid;
-  grid-template-columns: 20px 1fr;
-  grid-column: 1/span 12;
+  grid-template-columns: 30px 1fr;
+  grid-column: 1 / span 13;
   position: relative;
   &__sign {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $blue;
-    color: $white;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: var(--green);
     user-select: none;
   }
   &__input {
     display: flex;
     align-items: center;
+    font-size: 1.2rem;
     border: none;
     padding: 10px 0;
     outline: none;
-    width: 100%;
-    background-color: $blue;
-    color: $white;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    background-color: transparent;
+    color: var(--aqua);
+    user-select: none;
+    letter-spacing: 0.1rem;
+    padding-left: 5px;
   }
 }
 </style>

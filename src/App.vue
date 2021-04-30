@@ -1,8 +1,8 @@
 <template>
   <div id="app" v-on:click="setMouseCursor()">
-    <!-- <Header /> -->
+    <Header />
     <router-view />
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
@@ -36,12 +36,37 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: $lora-font;
-  font-size: 12px;
+  font: 1.3rem var(--font);
   margin: 0;
   padding: 0;
-  color: $white;
-  background-color: $black;
+  color: var(--white);
+  background-color: var(--black);
+  background-image: radial-gradient(
+    rgba(var(--green-rgb), 0.75),
+    var(--black) 120%
+  );
+  line-height: 1.6;
+  text-shadow: 0 0 5px var(--black);
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(var(--black-rgb), 0.5),
+      rgba(var(--black-rgb), 0.5) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: var(--blue);
+  text-shadow: none;
 }
 h1,
 h2,
@@ -49,8 +74,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $lora-font;
-  color: $white;
+  font-family: var(--font);
+  color: var(--white);
   margin: 0;
   padding: 0;
 }
@@ -63,12 +88,13 @@ li {
   line-height: 1.6;
 }
 a {
-  color: $blue;
+  color: var(--blue);
   transition: 300ms;
   margin: 0;
   padding: 0;
+  text-decoration: none;
   &:hover {
-    color: $aqua;
+    color: var(--aqua);
   }
 }
 ul {
@@ -77,35 +103,9 @@ ul {
     margin-bottom: 0;
     list-style-type: none;
     position: relative;
-    line-height: 1.6;
-    &:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -12px;
-      width: 4px;
-      height: 4px;
-      background-color: $black;
-      border-radius: 25%;
-    }
-    &.no-dot {
-      &:before {
-        display: none;
-      }
-    }
   }
 }
-.blue-line {
-  position: relative;
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 23px;
-    background-color: $blue;
-    width: 30px;
-    height: 3px;
-  }
+input {
+  font-family: var(--font);
 }
 </style>
