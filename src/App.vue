@@ -23,7 +23,7 @@ export default class App extends Vue {
   }
 
   setMouseCursor(): void {
-    console.debug('cool');
+    console.debug('Move cursor to last command component');
   }
 }
 </script>
@@ -42,8 +42,8 @@ body {
   color: var(--white);
   background-color: var(--black);
   background-image: radial-gradient(
-    rgba(var(--green-rgb), 0.75),
-    var(--black) 120%
+    rgba(var(--green-rgb), 0.35),
+    var(--black) 130%
   );
   line-height: 1.6;
   text-shadow: 0 0 5px var(--black);
@@ -56,8 +56,8 @@ body {
     height: 100vh;
     background: repeating-linear-gradient(
       0deg,
-      rgba(var(--black-rgb), 0.5),
-      rgba(var(--black-rgb), 0.5) 1px,
+      rgba(var(--black-rgb), 0.15),
+      rgba(var(--black-rgb), 0.15) 1px,
       transparent 1px,
       transparent 2px
     );
