@@ -22,7 +22,7 @@ import { CommandInterface, UnixCommands } from '../models/command';
 export default class Command extends Vue {
   @Prop({ type: Object }) public command!: CommandInterface;
   public input: string = '';
-  public unixCommands: any = { ...UnixCommands };
+  public unixCommands: { [key: string]: UnixCommands } = UnixCommands;
 
   constructor() {
     super();
@@ -51,10 +51,9 @@ export default class Command extends Vue {
 
   public enterClicked(input: string): void {
     eventBus.$emit(EventBusEvents.trigger, 'enter');
-    console.debug(this.unixCommands);
     const keys: string[] = Object.keys(UnixCommands);
     for (const k of keys) {
-      if (UnixCommands[k] === input) {
+      if (this.unixCommands[k] === input) {
         console.debug(this.unixCommands[k]);
       }
     }

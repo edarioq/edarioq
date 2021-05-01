@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="header__welcome">Welcome to edarioq (v1.0.0)</div>
+    <div class="header__welcome">Welcome to edarioq (v1.0.0 beta)</div>
     <div class="header__date">
       {{ date }}
     </div>
