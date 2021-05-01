@@ -3,36 +3,49 @@
     <span class="command__sign">$ ></span>
     <input
       class="command__input"
-      v-model="command"
+      v-model="input"
       type="text"
       @keyup.enter="enterClicked"
-      ref="command"
-      tabindex="1"
+      ref="cmd"
+      :tabindex="command.id"
+      :disabled="!command.active"
+      v-class="{ disabled: !command.active }"
     />
   </section>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { eventBus, EventBusEvents } from '../event-bus';
+import { CommandInterface } from '../models/command';
 
 @Component
 export default class Command extends Vue {
-  public command: string = '';
+  @Prop({ type: Object }) public command!: CommandInterface;
+  public input: string = '';
 
   constructor() {
     super();
   }
 
-  public mounted() {
+  public mounted(): void {
+    console.debug(this.command);
+    this.focusInput();
+  }
+
+  public focusInput(): void {
     this.$nextTick(() => {
-      const term = this.$refs.command as HTMLInputElement;
-      term.focus();
+      const input = this.$refs.cmd as HTMLInputElement;
+      input.focus();
     });
   }
 
+  public created(): void {
+    eventBus.$on(EventBusEvents.trigger, () => this.focusInput());
+  }
+
   public enterClicked(): void {
-    console.debug(this.command);
-    this.command = '';
+    this.input = '';
   }
 }
 </script>
@@ -67,6 +80,10 @@ $module: 'command';
     color: var(--aqua);
     letter-spacing: 0.1rem;
     padding-left: 5px;
+    &.disabled {
+      user-select: none;
+      pointer-events: none;
+    }
   }
 }
 </style>

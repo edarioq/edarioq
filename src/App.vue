@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { eventBus, EventBusEvents } from './event-bus';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -22,8 +23,8 @@ export default class App extends Vue {
     super();
   }
 
-  setMouseCursor(): void {
-    console.debug('Move cursor to last command component');
+  public setMouseCursor(): void {
+    eventBus.$emit(EventBusEvents.trigger);
   }
 }
 </script>

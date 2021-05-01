@@ -9,11 +9,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component
 export default class Header extends Vue {
-  date: Date = new Date();
+  public date: Date = new Date();
 
   constructor() {
     super();

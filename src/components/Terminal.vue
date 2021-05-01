@@ -2,7 +2,11 @@
   <section class="terminal">
     <div class="terminal__command">
       <template v-for="command in commands">
-        <component :is="command.component" :key="command.id"></component>
+        <component
+          :is="command.component"
+          :key="command.id"
+          :command="command"
+        ></component>
       </template>
     </div>
   </section>
@@ -28,9 +32,10 @@ export default class Terminal extends Vue {
     super();
   }
 
-  mounted() {
+  protected mounted() {
     this.commands.forEach((cmd) => (cmd.active = false));
-    this.commands.push({ id: 2, component: Command, active: true });
+    this.commands.push({ id: 2, component: Command, active: false });
+    this.commands.push({ id: 3, component: Command, active: true });
   }
 }
 </script>
