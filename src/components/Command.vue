@@ -35,7 +35,7 @@ export default class Command extends Vue {
   public focusInput(): void {
     this.$nextTick(() => {
       const input = this.$refs.cmd as HTMLInputElement;
-      if (input) {
+      if (input && this.command.active) {
         input.focus();
       }
     });
@@ -51,12 +51,20 @@ export default class Command extends Vue {
 
   public enterClicked(input: string): void {
     eventBus.$emit(EventBusEvents.trigger, 'enter');
-    const keys: string[] = Object.keys(UnixCommands);
+
+    const value = input.trim().toLowerCase();
+    if (value === UnixCommands.CLEAR) {
+      this.input = '';
+    }
+
+    const keys = Object.keys(UnixCommands);
     for (const k of keys) {
-      if (this.unixCommands[k] === input) {
-        console.debug(this.unixCommands[k]);
+      if (this.unixCommands[k] === value) {
+        console.debug(`Command: ${this.unixCommands[k]}`);
+        eventBus.$emit(EventBusEvents.trigger, this.unixCommands[k]);
       }
     }
+    this.focusInput();
   }
 }
 </script>

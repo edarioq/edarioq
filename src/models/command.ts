@@ -7,6 +7,7 @@ export interface CommandInterface {
 }
 
 export enum UnixCommands {
+  ENTER = 'enter',
   LS = 'ls',
   PWD = 'pwd',
   CD = 'cd',
