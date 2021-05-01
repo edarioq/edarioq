@@ -24,7 +24,7 @@ export default class App extends Vue {
   }
 
   public setMouseCursor(): void {
-    eventBus.$emit(EventBusEvents.trigger);
+    eventBus.$emit(EventBusEvents.trigger, 'focus');
   }
 }
 </script>

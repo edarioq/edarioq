@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { eventBus, EventBusEvents } from '../event-bus';
 import { CommandInterface } from '../models/command';
 import Command from './Command.vue';
 
@@ -23,19 +24,27 @@ import Command from './Command.vue';
   },
 })
 export default class Terminal extends Vue {
-  public active = false;
   public commands: CommandInterface[] = [
     { id: 1, component: Command, active: true },
   ];
+  private index = 1;
 
   constructor() {
     super();
   }
 
   protected mounted() {
-    this.commands.forEach((cmd) => (cmd.active = false));
-    this.commands.push({ id: 2, component: Command, active: false });
-    this.commands.push({ id: 3, component: Command, active: true });
+    eventBus.$on(EventBusEvents.trigger, (res: string) => {
+      if (res === 'enter') {
+        this.index += 1;
+        this.commands.forEach((cmd) => (cmd.active = false));
+        this.commands.push({
+          id: this.index,
+          component: Command,
+          active: true,
+        });
+      }
+    });
   }
 }
 </script>

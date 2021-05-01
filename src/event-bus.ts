@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 export enum EventBusEvents {
-  trigger = 'on',
+  trigger = '',
 }
 
 export const eventBus = new Vue();

@@ -1,15 +1,14 @@
 <template>
-  <section class="command">
+  <section class="command" :class="{ 'command--disabled': !command.active }">
     <span class="command__sign">$ ></span>
     <input
       class="command__input"
       v-model="input"
       type="text"
-      @keyup.enter="enterClicked"
+      @keyup.enter="enterClicked(input)"
       ref="cmd"
       :tabindex="command.id"
       :disabled="!command.active"
-      v-class="{ disabled: !command.active }"
     />
   </section>
 </template>
@@ -17,35 +16,48 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { eventBus, EventBusEvents } from '../event-bus';
-import { CommandInterface } from '../models/command';
+import { CommandInterface, UnixCommands } from '../models/command';
 
 @Component
 export default class Command extends Vue {
   @Prop({ type: Object }) public command!: CommandInterface;
   public input: string = '';
+  public unixCommands: any = { ...UnixCommands };
 
   constructor() {
     super();
   }
 
   public mounted(): void {
-    console.debug(this.command);
     this.focusInput();
   }
 
   public focusInput(): void {
     this.$nextTick(() => {
       const input = this.$refs.cmd as HTMLInputElement;
-      input.focus();
+      if (input) {
+        input.focus();
+      }
     });
   }
 
   public created(): void {
-    eventBus.$on(EventBusEvents.trigger, () => this.focusInput());
+    eventBus.$on(EventBusEvents.trigger, (focus: string) => {
+      if (focus === 'focus') {
+        this.focusInput();
+      }
+    });
   }
 
-  public enterClicked(): void {
-    this.input = '';
+  public enterClicked(input: string): void {
+    eventBus.$emit(EventBusEvents.trigger, 'enter');
+    console.debug(this.unixCommands);
+    const keys: string[] = Object.keys(UnixCommands);
+    for (const k of keys) {
+      if (UnixCommands[k] === input) {
+        console.debug(this.unixCommands[k]);
+      }
+    }
   }
 }
 </script>
@@ -58,7 +70,6 @@ $module: 'command';
   grid-template-columns: 30px 1fr;
   grid-column: 1 / span 13;
   position: relative;
-  cursor: none;
   &__sign {
     display: flex;
     align-items: center;
@@ -80,10 +91,11 @@ $module: 'command';
     color: var(--aqua);
     letter-spacing: 0.1rem;
     padding-left: 5px;
-    &.disabled {
-      user-select: none;
-      pointer-events: none;
-    }
+  }
+  &--disabled {
+    user-select: none;
+    pointer-events: none;
+    cursor: none;
   }
 }
 </style>
