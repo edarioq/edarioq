@@ -1,6 +1,6 @@
 {
   "name": "edarioq",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +9,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "start": "node index",
-    "server": "nodemon index"
+    "server": "nodemon index",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -37,11 +38,20 @@
     "@vue/cli-service": "^4.5.12",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "husky": "^4.3.8",
     "nodemon": "^1.19.4",
+    "prettier": "2.2.1",
     "sass": "^1.32.8",
     "sass-loader": "^7.1.0",
+    "stylelint-config-prettier": "^8.0.2",
     "ts-jest": "^26.5.4",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.9",
     "vue-template-compiler": "^2.6.12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier"
+    }
   }
 }
