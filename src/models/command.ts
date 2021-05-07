@@ -14,4 +14,6 @@ export enum UnixCommands {
   LL = 'll',
   LSLA = 'ls -la',
   CLEAR = 'clear',
+  MKDIR = 'mkdir',
+  HELP = 'help',
 }

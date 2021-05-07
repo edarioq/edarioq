@@ -30,8 +30,10 @@ $module: 'header';
   max-width: 90vw;
   margin: 0 auto;
   &__welcome {
+    font-size: 1.2rem;
   }
   &__date {
+    font-size: 1.2rem;
   }
 }
 </style>

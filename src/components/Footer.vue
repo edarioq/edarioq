@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">{{ date.getFullYear() }}</footer>
+  <footer class="footer">Code your Future - {{ date.getFullYear() }}</footer>
 </template>
 
 <script lang="ts">
@@ -21,7 +21,7 @@ $module: 'footer';
   display: grid;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   position: absolute;
   bottom: 0;
   left: 50%;
