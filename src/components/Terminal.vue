@@ -6,6 +6,7 @@
           :is="command.component"
           :key="command.id"
           :command="command"
+          :outputs="outputs"
         ></component>
       </template>
     </div>
@@ -25,10 +26,19 @@ import Command from './Command.vue';
 })
 export default class Terminal extends Vue {
   public commands: CommandInterface[] = [];
+  public outputs: any[] = [];
   private index = 1;
 
   constructor() {
     super();
+  }
+
+  public generateId(id: number, type: string): string {
+    return type === 'input'
+      ? `input-${id}`
+      : type === 'output'
+      ? `output-${id}`
+      : '';
   }
 
   protected mounted() {
@@ -41,7 +51,13 @@ export default class Terminal extends Vue {
     this.commands.length = 0;
     setTimeout(
       () =>
-        (this.commands = [{ id: this.index, component: Command, active: true }])
+        (this.commands = [
+          {
+            id: this.index,
+            component: Command,
+            active: true,
+          },
+        ])
     );
     eventBus.$emit(EventBusEvents.trigger, 'focus');
   }

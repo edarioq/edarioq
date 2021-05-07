@@ -31,13 +31,14 @@ export default class App extends Vue {
 
 <style lang="scss">
 #app {
+  font: 1.3rem;
   min-height: 100vh;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font: 1.3rem var(--font);
+  font: 12px var(--font);
   margin: 0;
   padding: 0;
   color: var(--white);
@@ -83,7 +84,8 @@ h6 {
 p,
 span,
 ul,
-li {
+li,
+pre {
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -101,6 +103,8 @@ a {
 ul {
   margin-left: 20px;
   li {
+    font-family: var(--font);
+    font-size: 1.2rem;
     margin-bottom: 0;
     list-style-type: none;
     position: relative;

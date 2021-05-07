@@ -10,6 +10,7 @@
       :tabindex="command.id"
       :disabled="!command.active"
     />
+    <Output v-if="output" :output="output" />
   </section>
 </template>
 
@@ -17,11 +18,18 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { eventBus, EventBusEvents } from '../event-bus';
 import { CommandInterface, UnixCommands } from '../models/command';
+import Output from './Output.vue';
 
-@Component
+@Component({
+  components: {
+    Output,
+  },
+})
 export default class Command extends Vue {
   @Prop({ type: Object }) public command!: CommandInterface;
+
   public input: string = '';
+  public output: any = '';
   public unixCommands: { [key: string]: UnixCommands } = UnixCommands;
 
   constructor() {
@@ -60,8 +68,9 @@ export default class Command extends Vue {
     const keys = Object.keys(UnixCommands);
     for (const k of keys) {
       if (this.unixCommands[k] === value) {
-        console.debug(`Command: ${this.unixCommands[k]}`);
         eventBus.$emit(EventBusEvents.trigger, this.unixCommands[k]);
+        this.output = this.unixCommands[k];
+        console.debug(`Command: ${this.output}`);
       }
     }
     this.focusInput();
