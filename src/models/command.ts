@@ -16,4 +16,5 @@ export enum UnixCommands {
   CLEAR = 'clear',
   MKDIR = 'mkdir',
   HELP = 'help',
+  CDDOT = 'cd ..',
 }

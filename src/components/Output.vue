@@ -71,7 +71,6 @@ $module: 'output';
   }
   &__message {
     font-size: 1.1rem;
-    white-space: nowrap;
     line-height: 1.5;
   }
 }

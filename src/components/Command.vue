@@ -84,8 +84,10 @@ $module: 'command';
 .#{$module} {
   display: grid;
   grid-template-columns: 30px 1fr;
-  grid-column: 1 / span 13;
   position: relative;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
   &__sign {
     display: flex;
     align-items: center;
@@ -106,7 +108,7 @@ $module: 'command';
     background-color: transparent;
     color: var(--aqua);
     letter-spacing: 0.1rem;
-    padding-left: 5px;
+    padding: 0 5px;
     width: 100%;
   }
   &--disabled {

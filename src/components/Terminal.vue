@@ -88,5 +88,7 @@ export default class Terminal extends Vue {
 $module: 'terminal';
 
 .#{$module} {
+  display: grid;
+  grid-column: 1 / span 13;
 }
 </style>
