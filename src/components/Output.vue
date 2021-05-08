@@ -60,13 +60,12 @@ $module: 'output';
 
 .#{$module} {
   margin: 0;
-  padding: 0;
+  padding: 0 5px;
   grid-column: 2;
   &__list {
     margin: 0;
     &__message {
       font-size: 1.1rem;
-      white-space: nowrap;
       line-height: 1.5;
     }
   }

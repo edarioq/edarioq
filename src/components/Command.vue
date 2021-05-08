@@ -107,6 +107,7 @@ $module: 'command';
     color: var(--aqua);
     letter-spacing: 0.1rem;
     padding-left: 5px;
+    width: 100%;
   }
   &--disabled {
     user-select: none;
