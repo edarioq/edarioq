@@ -6,6 +6,7 @@
       v-model="input"
       type="text"
       @keyup.enter="enterClicked(input)"
+      @keyup.ctrl.c="enterClicked(input)"
       ref="cmd"
       :tabindex="command.id"
       :disabled="!command.active"
