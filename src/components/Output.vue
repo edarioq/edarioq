@@ -47,11 +47,19 @@ export default class Terminal extends Vue {
     if (command === UnixCommands.PWD) {
       return '/Users/edarioq';
     }
-    if (command === UnixCommands.LS || command === UnixCommands.LL || command === UnixCommands.LSLA) {
+    if (
+      command === UnixCommands.LS ||
+      command === UnixCommands.LL ||
+      command === UnixCommands.LSLA
+    ) {
       return ['home', 'about', 'projects'];
     }
-    if (command === UnixCommands.CDH || command === UnixCommands.CDA || command === UnixCommands.CDP) {
-      return 'Feature coming soon....'
+    if (
+      command === UnixCommands.CDH ||
+      command === UnixCommands.CDA ||
+      command === UnixCommands.CDP
+    ) {
+      return 'Feature coming soon....';
     }
     return `Command ${command} is recognized but not yet supported`;
   }
