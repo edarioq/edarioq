@@ -1,11 +1,13 @@
-# Install
+# This is my site
+
+## To install
 
 Run `npm install`
 
-# Run Vue
+## To run Vue
 
 Run `npm run serve`
 
-# Run Build
+## To build
 
 Run `npm run build` and then `npm start`
